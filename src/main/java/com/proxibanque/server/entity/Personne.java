@@ -1,37 +1,44 @@
 package com.proxibanque.server.entity;
 
+import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Inheritance;
+import jakarta.persistence.InheritanceType;
 
+@Entity
+@Inheritance(strategy = InheritanceType.JOINED)
 public class Personne {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int id;
+	private Long id;
 	private String nom;
 	private String prenom;
-	private Adresse adresse;
-	private int telephone;
+	
+	private String telephone;
 	
 	public Personne() {
 		// TODO Auto-generated constructor stub
 	}
+	
 
-	public Personne(String nom, String prenom, Adresse adresse, int telephone) {
+
+	public Personne(String nom, String prenom, String telephone) {
 		super();
 		
 		this.nom = nom;
 		this.prenom = prenom;
-		this.adresse = adresse;
+		
 		this.telephone = telephone;
 	}
 
 
-	public int getId() {
+	public Long  getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
@@ -51,25 +58,19 @@ public class Personne {
 		this.prenom = prenom;
 	}
 
-	public Adresse getAdresse() {
-		return adresse;
-	}
+	
 
-	public void setAdresse(Adresse adresse) {
-		this.adresse = adresse;
-	}
-
-	public int getTelephone() {
+	public String  getTelephone() {
 		return telephone;
 	}
 
-	public void setTelephone(int telephone) {
+	public void setTelephone(String  telephone) {
 		this.telephone = telephone;
 	}
 	
 	@Override
 	public String toString() {
-		return "Personne [id=" + id + ", nom=" + nom + ", prenom=" + prenom + ", adresse=" + adresse + ", telephone="
+		return "Personne [id=" + id + ", nom=" + nom + ", prenom=" + prenom + ", telephone="
 				+ telephone + "]";
 	}
 

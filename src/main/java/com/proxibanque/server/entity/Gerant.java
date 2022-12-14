@@ -5,16 +5,15 @@ import java.util.Set;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.OneToMany;
-import jakarta.persistence.OneToOne;
 
 @Entity
 public class Gerant extends Personne{
 	
-	@OneToOne
-	Agence agence;
+//	@OneToOne(mappedBy = "gerant")
+//	private Agence agence;
 	
-	@OneToMany(mappedBy = "gerant")
-	Set<Conseiller>conseillers = new HashSet<>();
+	@OneToMany
+	private Set<Conseiller>conseillers = new HashSet<>();
 	
 	
 	
@@ -22,8 +21,8 @@ public class Gerant extends Personne{
 		// TODO Auto-generated constructor stub
 	}
 
-	public Gerant( String nom, String prenom, Adresse adresse, int telephone) {
-		super(nom, prenom, adresse, telephone);
+	public Gerant( String nom, String prenom, String telephone) {
+		super(nom, prenom, telephone);
 		// TODO Auto-generated constructor stub
 	}
 	

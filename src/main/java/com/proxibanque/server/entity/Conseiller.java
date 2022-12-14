@@ -3,6 +3,7 @@ package com.proxibanque.server.entity;
 import java.util.HashSet;
 import java.util.Set;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
@@ -10,10 +11,10 @@ import jakarta.persistence.OneToMany;
 @Entity
 public class Conseiller extends Personne {
 	
-	@OneToMany(mappedBy = "conseiller")
+	@OneToMany(mappedBy = "conseiller", cascade = {CascadeType.PERSIST,CascadeType.REMOVE})
 	private Set<Client> clients = new HashSet<>();
 	
-	@ManyToOne
+	@ManyToOne(cascade = {CascadeType.PERSIST,CascadeType.REMOVE})
 	private Gerant gerant;
 	
 	
@@ -30,8 +31,8 @@ public class Conseiller extends Personne {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Conseiller(int id, String nom, String prenom, Adresse adresse, int telephone) {
-		super(nom, prenom, adresse, telephone);
+	public Conseiller( String nom, String prenom, String  telephone) {
+		super(nom, prenom, telephone);
 		// TODO Auto-generated constructor stub
 	}
 	
