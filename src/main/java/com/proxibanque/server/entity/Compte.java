@@ -12,14 +12,14 @@ import jakarta.persistence.Inheritance;
 import jakarta.persistence.InheritanceType;
 
 @Entity
-@Inheritance(strategy = InheritanceType.JOINED)
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 public class Compte {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int numCompte;
+	private Long numCompte;
 	
-	private double solde;
+	private double solde = 100d;
 	@CreatedDate
 	private Date dateOuverture = new Date();
 	
@@ -34,11 +34,11 @@ public class Compte {
 		this.dateOuverture = dateOuverture;
 	}
 
-	public int getNumCompte() {
+	public Long getNumCompte() {
 		return numCompte;
 	}
 
-	public void setNumCompte(int numCompte) {
+	public void setNumCompte(Long numCompte) {
 		this.numCompte = numCompte;
 	}
 

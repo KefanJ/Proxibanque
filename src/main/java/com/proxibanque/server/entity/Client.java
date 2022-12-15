@@ -3,6 +3,7 @@ package com.proxibanque.server.entity;
 import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToOne;
 
 @Entity
 public class Client extends Personne {
@@ -11,10 +12,10 @@ public class Client extends Personne {
 	@ManyToOne
 	private Conseiller conseiller;
 	
-	@Embedded
+	@OneToOne//(mappedBy ="client" , cascade = {CascadeType.PERSIST,CascadeType.REMOVE})
 	private CompteCourant compteCourant;
 	
-	@Embedded
+	@OneToOne////(mappedBy ="client" , cascade = {CascadeType.PERSIST,CascadeType.REMOVE})
 	private CompteEpargne compteEpargne;
 	
 	@Embedded
@@ -25,13 +26,21 @@ public class Client extends Personne {
 	}
 
 
-	public Client(String nom, String prenom, Adresse adresse, String telephone, Conseiller conseiller, CompteCourant compteCourant,  CompteEpargne compteEpargne ) {
+	public Client(String nom, String prenom, Adresse adresse, String telephone, Conseiller conseiller, CompteCourant compteCourant, CompteEpargne compteEpargne ) {
 		super(nom, prenom, telephone);
 		
 		this.conseiller = conseiller;
+		this.adresse =adresse;
 		this.compteCourant = compteCourant;
 		this.compteEpargne = compteEpargne;
+		// TODO Auto-generated constructor stub
+	}
+	public Client(String nom, String prenom, Adresse adresse, String telephone, Conseiller conseiller) {
+		super(nom, prenom, telephone);
+		
+		this.conseiller = conseiller;
 		this.adresse =adresse;
+	
 		// TODO Auto-generated constructor stub
 	}
 
