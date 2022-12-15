@@ -15,6 +15,7 @@ public class Client extends Personne {
 	
 	@OneToOne(mappedBy ="client" , cascade = {CascadeType.ALL})
 	private CompteCourant compteCourant;
+	
 	@OneToOne(mappedBy ="client" , cascade = {CascadeType.ALL})
 	private CompteEpargne compteEpargne;
 	

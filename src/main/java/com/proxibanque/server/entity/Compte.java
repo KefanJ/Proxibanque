@@ -16,7 +16,7 @@ import jakarta.persistence.InheritanceType;
 public class Compte {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long numCompte;
 	
 	private double solde = 100d;

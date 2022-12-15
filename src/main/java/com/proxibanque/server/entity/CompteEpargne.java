@@ -33,6 +33,10 @@ public class CompteEpargne extends Compte {
 		// TODO Auto-generated constructor stub
 		this.taux = taux;
 	}
+	
+	public CompteEpargne(Client client) {
+		this.client = client;
+	}
 
 	public double getTaux() {
 		return taux;

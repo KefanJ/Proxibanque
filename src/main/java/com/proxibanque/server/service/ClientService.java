@@ -11,6 +11,8 @@ import com.proxibanque.server.entity.CompteCourant;
 import com.proxibanque.server.entity.CompteEpargne;
 import com.proxibanque.server.repository.IClientRepository;
 import com.proxibanque.server.repository.ICompteBancaire;
+import com.proxibanque.server.repository.ICompteCourantRepository;
+import com.proxibanque.server.repository.ICompteEpargneRepository;
 
 @Service
 public class ClientService implements IClientService {
@@ -21,6 +23,12 @@ public class ClientService implements IClientService {
 	@Autowired
 	ICompteBancaire compteRepository;
 	
+	@Autowired
+	ICompteCourantRepository compteCourantRepository;
+	
+	@Autowired
+	ICompteEpargneRepository compteEpargneRepository;
+	
 
 	@Override
 	public Client addClient(Client client) {
@@ -28,7 +36,7 @@ public class ClientService implements IClientService {
 		
 		Date date = new Date();
 
-		CompteCourant compteCourant = new CompteCourant(client, 100d, date, 1000d);
+		CompteCourant compteCourant = new CompteCourant(client, client.getCompteCourant().getSolde(), date, 1000d);
 		CompteEpargne compteEpargne = new CompteEpargne(client, 100d, date, 3d);
 		client.setCompteCourant(compteCourant);
 		client.setCompteEpargne(compteEpargne);
@@ -53,14 +61,17 @@ public class ClientService implements IClientService {
 	public Client updateClient(Client client) {
 		// TODO Auto-generated method stub
 		
-		CompteCourant compteCourant = (CompteCourant) compteRepository.findById(client.getCompteCourant().getNumCompte()).get();
-		CompteEpargne compteEpargne = (CompteEpargne) compteRepository.findById(client.getCompteEpargne().getNumCompte()).get();
+		CompteCourant compteCourant = getCompteCourantById(client.getCompteCourant().getNumCompte());
+		CompteEpargne compteEpargne = getCompteEpargneById(client.getCompteEpargne().getNumCompte());
 		
 		client.setCompteCourant(compteCourant);
 		client.setCompteEpargne(compteEpargne);
 		updateCompteCourant(compteCourant);
 		updateCompteEpargne(compteEpargne);
-		return repository.save(client);
+		repository.save(client);
+		
+		System.out.println(client.getCompteCourant().getSolde());
+		return client;
 	}
 
 	@Override
@@ -96,5 +107,19 @@ public class ClientService implements IClientService {
 		// TODO Auto-generated method stub
 		return compteRepository.save(compteEpargne);
 	}
-	
+
+	@Override
+	public CompteCourant getCompteCourantById(Long id) {
+		// TODO Auto-generated method stub
+		
+		return compteCourantRepository.findById(id).get();
+	}
+
+	@Override
+	public CompteEpargne getCompteEpargneById(Long id) {
+		// TODO Auto-generated method stub
+		return compteEpargneRepository.findById(id).get();
+	}
+
+
 }

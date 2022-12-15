@@ -15,4 +15,7 @@ public interface IClientService {
 	public CompteEpargne addCompteEpargne(CompteEpargne  compteEpargne );
 	public CompteCourant updateCompteCourant(CompteCourant compteCourant);
 	public CompteEpargne updateCompteEpargne(CompteEpargne compteEpargne);
+	public CompteCourant getCompteCourantById(Long id);
+	public CompteEpargne getCompteEpargneById(Long id);
+	
 }
