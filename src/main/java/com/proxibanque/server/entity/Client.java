@@ -1,5 +1,6 @@
 package com.proxibanque.server.entity;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
 import jakarta.persistence.ManyToOne;
@@ -12,10 +13,9 @@ public class Client extends Personne {
 	@ManyToOne
 	private Conseiller conseiller;
 	
-	@OneToOne//(mappedBy ="client" , cascade = {CascadeType.PERSIST,CascadeType.REMOVE})
+	@OneToOne(mappedBy ="client" , cascade = {CascadeType.ALL})
 	private CompteCourant compteCourant;
-	
-	@OneToOne////(mappedBy ="client" , cascade = {CascadeType.PERSIST,CascadeType.REMOVE})
+	@OneToOne(mappedBy ="client" , cascade = {CascadeType.ALL})
 	private CompteEpargne compteEpargne;
 	
 	@Embedded

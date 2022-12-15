@@ -2,6 +2,8 @@ package com.proxibanque.server.entity;
 
 import java.util.Date;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.OneToOne;
 
@@ -10,7 +12,7 @@ public class CompteCourant extends Compte {
 	private double seuil = 1000d;
 	
 	@OneToOne
-	//@MapsId
+	@JsonIgnore
 	private Client client;
 	
 	public CompteCourant() {

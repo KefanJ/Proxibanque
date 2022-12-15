@@ -38,8 +38,7 @@ public class ClientService implements IClientService {
 		//addCompteEpargne(compteEpargne);
 		
 		System.out.println(compteCourant.getNumCompte());
-		compteRepository.save(compteCourant);
-		compteRepository.save(compteEpargne);
+		
 		repository.save(client);
 		return client;
 	}
@@ -54,7 +53,13 @@ public class ClientService implements IClientService {
 	public Client updateClient(Client client) {
 		// TODO Auto-generated method stub
 		
+		CompteCourant compteCourant = (CompteCourant) compteRepository.findById(client.getCompteCourant().getNumCompte()).get();
+		CompteEpargne compteEpargne = (CompteEpargne) compteRepository.findById(client.getCompteEpargne().getNumCompte()).get();
 		
+		client.setCompteCourant(compteCourant);
+		client.setCompteEpargne(compteEpargne);
+		updateCompteCourant(compteCourant);
+		updateCompteEpargne(compteEpargne);
 		return repository.save(client);
 	}
 
@@ -75,6 +80,19 @@ public class ClientService implements IClientService {
 
 	@Override
 	public CompteEpargne addCompteEpargne(CompteEpargne compteEpargne) {
+		// TODO Auto-generated method stub
+		return compteRepository.save(compteEpargne);
+	}
+
+	@Override
+	public CompteCourant updateCompteCourant(CompteCourant compteCourant) {
+		// TODO Auto-generated method stub
+		
+		return compteRepository.save(compteCourant);
+	}
+
+	@Override
+	public CompteEpargne updateCompteEpargne(CompteEpargne compteEpargne) {
 		// TODO Auto-generated method stub
 		return compteRepository.save(compteEpargne);
 	}

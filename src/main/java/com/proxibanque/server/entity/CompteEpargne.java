@@ -2,8 +2,9 @@ package com.proxibanque.server.entity;
 
 import java.util.Date;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Entity;
-import jakarta.persistence.MapsId;
 import jakarta.persistence.OneToOne;
 
 @Entity
@@ -12,7 +13,7 @@ public class CompteEpargne extends Compte {
 	
 	
 	@OneToOne
-	//@MapsId
+	@JsonIgnore
 	private Client client;
 	
 	public Client getClient() {

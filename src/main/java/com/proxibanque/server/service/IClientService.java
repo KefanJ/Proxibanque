@@ -13,4 +13,6 @@ public interface IClientService {
 	public void deleteClient(Long id);
 	public CompteCourant addCompteCourant(CompteCourant compteCourant);
 	public CompteEpargne addCompteEpargne(CompteEpargne  compteEpargne );
+	public CompteCourant updateCompteCourant(CompteCourant compteCourant);
+	public CompteEpargne updateCompteEpargne(CompteEpargne compteEpargne);
 }
