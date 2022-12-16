@@ -1,8 +1,6 @@
 package com.proxibanque.server.entity;
 
-import java.util.Date;
-
-import org.springframework.data.annotation.CreatedDate;
+import java.time.LocalDate;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -20,14 +18,14 @@ public class Compte {
 	private Long numCompte;
 	
 	private double solde = 100d;
-	@CreatedDate
-	private Date dateOuverture = new Date();
+	
+	private LocalDate dateOuverture = LocalDate.now();
 	
 	public Compte() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Compte(double solde, Date dateOuverture) {
+	public Compte(double solde, LocalDate  dateOuverture) {
 		super();
 
 		this.solde = solde;
@@ -50,13 +48,13 @@ public class Compte {
 		this.solde = solde;
 	}
 
-	public Date getDateOuverture() {
+	public LocalDate  getDateOuverture() {
 	
 		
 		return dateOuverture;
 	}
 
-	public void setDateOuverture(Date dateOuverture) {
+	public void setDateOuverture(LocalDate  dateOuverture) {
 		this.dateOuverture = dateOuverture;
 	}
 

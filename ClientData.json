@@ -1,0 +1,14 @@
+{
+  "prenom":"Benjamin",
+  "nom":"Latour",
+  "adresse":{"rue":"5 rue Lamartine","ville":"PARIS","codePostal":"75006"},
+  "telephone":"0659334887"
+},
+
+
+{
+  "prenom":"Sophie",
+  "nom":"Nguyen",
+  "adresse":{"rue":"9 rue Huges Capet","ville":"FONTENAY-SOUS-BOIS","codePostal":"94120"},
+  "telephone":"0659334887"
+}

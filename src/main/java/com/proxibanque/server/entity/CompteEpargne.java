@@ -1,6 +1,6 @@
 package com.proxibanque.server.entity;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -28,7 +28,7 @@ public class CompteEpargne extends Compte {
 		// TODO Auto-generated constructor stub
 	}
 
-	public CompteEpargne(Client client, double solde, Date dateOuverture, double taux) {
+	public CompteEpargne(Client client, double solde, LocalDate  dateOuverture, double taux) {
 		super(solde, dateOuverture);
 		// TODO Auto-generated constructor stub
 		this.taux = taux;
