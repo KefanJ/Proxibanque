@@ -4,14 +4,17 @@ import java.time.LocalDate;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
 
 @Entity
 public class CompteCourant extends Compte {
-	private double seuil = 1000d;
+	private Double seuil = 1000d;
 	
-	@OneToOne
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name="client_id")
 	@JsonIgnore
 	private Client client;
 	
@@ -19,7 +22,7 @@ public class CompteCourant extends Compte {
 		// TODO Auto-generated constructor stub
 	}
 
-	public CompteCourant( Client client,  double solde, LocalDate  dateOuverture, double seuil) {
+	public CompteCourant( Client client,  Double solde, LocalDate  dateOuverture, Double seuil) {
 		super(solde, dateOuverture);
 		this.seuil = seuil;
 		this.client = client;
@@ -42,7 +45,7 @@ public class CompteCourant extends Compte {
 		return seuil;
 	}
 
-	public void setSeuil(double seuil) {
+	public void setSeuil(Double seuil) {
 		this.seuil = seuil;
 	}
 	

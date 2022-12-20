@@ -4,15 +4,18 @@ import java.time.LocalDate;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
 
 @Entity
 public class CompteEpargne extends Compte {
-	private double taux =3d;
 	
+	private Double taux =3d;
 	
-	@OneToOne
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name="client_id")
 	@JsonIgnore
 	private Client client;
 	
@@ -28,7 +31,7 @@ public class CompteEpargne extends Compte {
 		// TODO Auto-generated constructor stub
 	}
 
-	public CompteEpargne(Client client, double solde, LocalDate  dateOuverture, double taux) {
+	public CompteEpargne(Client client, Double solde, LocalDate  dateOuverture, Double taux) {
 		super(solde, dateOuverture);
 		// TODO Auto-generated constructor stub
 		this.taux = taux;
@@ -42,7 +45,7 @@ public class CompteEpargne extends Compte {
 		return taux;
 	}
 
-	public void setTaux(double taux) {
+	public void setTaux(Double  taux) {
 		this.taux = taux;
 	}
 	
