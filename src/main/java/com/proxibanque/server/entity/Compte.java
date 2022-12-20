@@ -7,6 +7,7 @@ import org.springframework.stereotype.Component;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -31,8 +32,10 @@ public class Compte {
 	private LocalDate dateOuverture = LocalDate.now();
 	
 	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name="client_id")
+
+	@JoinColumn(name="client_id", updatable = false)
 	@JsonIgnore
+	//@Column(nullable = false)
 	private Client client;
 	
 
@@ -97,7 +100,8 @@ public class Compte {
 
 	@Override
 	public String toString() {
-		return "Compte [numCompte=" + numCompte + ", solde=" + solde + ", dateOuverture=" + dateOuverture + "]";
+		return "Compte [numCompte=" + numCompte + ", solde=" + solde + ", dateOuverture=" + dateOuverture + ", client="
+				+ client + "]";
 	}
 	
 	

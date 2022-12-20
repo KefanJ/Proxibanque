@@ -1,9 +1,9 @@
 package com.proxibanque.server.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
 
-import com.proxibanque.server.entity.Client;
 import com.proxibanque.server.entity.Compte;
 import com.proxibanque.server.repository.ICompteCourantRepository;
 import com.proxibanque.server.repository.ICompteEpargneRepository;
@@ -25,7 +25,8 @@ public class CompteBancaireService implements ICompteBancaire {
 	
 	
 	@Autowired
-	//ClientService clientService;
+	@Lazy
+	ClientService clientService;
 	
 //	@Override
 //	public CompteCourant getCompteCourantById(Long id) {
@@ -90,10 +91,20 @@ public class CompteBancaireService implements ICompteBancaire {
 	}
 
 	@Override
-	public Compte updateCompte(Client client) {
+	public Compte updateCompte(Compte compte) {
 		// TODO Auto-generated method stub
+	
+		//compteRepository.save(compte);
+		if(compte.getNumCompte() != null) {
+			compte.setSolde(compte.getSolde());
+			compte.setDateOuverture(compte.getDateOuverture());
+			compte.setNumCompte(compte.getNumCompte());
+			//compteRepository.save(compte);
+		}
 		
-		return compteRepository.save(client.getCompte());
+		
+		System.out.println(compte.getNumCompte());
+		return compte;
 	}
 
 	@Override

@@ -1,12 +1,16 @@
 package com.proxibanque.server.entity;
 
+import org.springframework.stereotype.Component;
+
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToOne;
 
 @Entity
+@Component
 public class Client extends Personne {
 	
 	
@@ -19,6 +23,7 @@ public class Client extends Personne {
 //	@OneToOne(mappedBy ="client" , cascade = {CascadeType.ALL}, orphanRemoval = true)
 //	private CompteEpargne compteEpargne;
 	
+	//@Column(nullable = false)
 	@OneToOne(mappedBy = "client", cascade = {CascadeType.ALL})
 	private Compte compte;
 	
@@ -100,7 +105,7 @@ public class Client extends Personne {
 
 	@Override
 	public String toString() {
-		return "Client [conseiller=" + conseiller + "]";
+		return "Client [conseiller=" + conseiller + ", compte=" + compte + ", adresse=" + adresse + "]";
 	}
 
 

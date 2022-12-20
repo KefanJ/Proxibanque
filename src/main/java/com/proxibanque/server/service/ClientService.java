@@ -63,7 +63,8 @@ public class ClientService implements IClientService {
 //		compteService.updateCompteEpargne(compteEpargne);
 		//Compte compte = compteService.geCompteById(client.getCompte().getNumCompte());
 		//client.setCompte(compte);
-		//compteService.updateCompte(compte);
+		compteService.updateCompte(client.getCompte());
+		
 		
 		repository.save(client);
 		
@@ -86,6 +87,12 @@ public class ClientService implements IClientService {
 		//Client client = repository.findById(id).get();
 		//compteService.deleteCompte(client.getCompte().getNumCompte());
 		repository.deleteById(id);
+	}
+
+	@Override
+	public Client getClientById(Long id) {
+		// TODO Auto-generated method stub
+		return repository.findById(id).get();
 	}
 
 //	@Override

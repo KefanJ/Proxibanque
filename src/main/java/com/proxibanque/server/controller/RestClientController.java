@@ -32,6 +32,11 @@ public class RestClientController {
 		return service.getClients();
 	}
 	
+	@GetMapping("/{id}")
+	public Client getClientById(@PathVariable("id") Long id){
+		return service.getClientById(id);
+	}
+	
 	@PutMapping
 	public Client updateClient(@RequestBody Client client) {
 		return service.updateClient(client);

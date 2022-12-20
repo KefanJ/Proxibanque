@@ -27,8 +27,8 @@ public class RestCompteController {
 	
 	
 	@PutMapping
-	public Compte updateCompte(@RequestBody Client client) {
-		return service.updateCompte(client);
+	public Compte updateCompte(@RequestBody Compte compte) {
+		return service.updateCompte(compte);
 	}
 	
 	
