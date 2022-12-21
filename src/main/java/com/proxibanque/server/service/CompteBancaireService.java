@@ -1,5 +1,7 @@
 package com.proxibanque.server.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
@@ -111,6 +113,12 @@ public class CompteBancaireService implements ICompteBancaire {
 	public void deleteCompte(Long id) {
 		// TODO Auto-generated method stub
 		compteRepository.deleteById(id);
+	}
+
+	@Override
+	public List<Compte> getComptes() {
+		// TODO Auto-generated method stub
+		return compteRepository.findAll();
 	}
 
 }

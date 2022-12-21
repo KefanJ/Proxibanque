@@ -1,5 +1,7 @@
 package com.proxibanque.server.service;
 
+import java.util.List;
+
 import com.proxibanque.server.entity.Compte;
 
 public interface ICompteBancaire {
@@ -8,6 +10,7 @@ public interface ICompteBancaire {
 	
 	
 	public Compte addCompte(Compte compte);
+	public List<Compte> getComptes();
 	public Compte geCompteById(Long id);
 	public Compte updateCompte(Compte compte);
 	public void deleteCompte(Long id);

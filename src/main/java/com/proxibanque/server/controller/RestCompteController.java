@@ -1,5 +1,7 @@
 package com.proxibanque.server.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -9,12 +11,13 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.proxibanque.server.entity.Client;
 import com.proxibanque.server.entity.Compte;
 import com.proxibanque.server.service.CompteBancaireService;
 
 @RestController
 @RequestMapping("/compte")
-@CrossOrigin(origins = {"http://localhost:4200"})
+//@CrossOrigin(origins = {"http://localhost:4200"})
 public class RestCompteController {
 
 	@Autowired
@@ -32,6 +35,11 @@ public class RestCompteController {
 		return service.updateCompte(compte);
 	}
 	
+	
+	@GetMapping
+	public List<Compte>getComptes(){
+		return service.getComptes();
+	}
 	
 	
 //	@GetMapping("/comptecourant/{id}")
