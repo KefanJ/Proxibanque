@@ -15,8 +15,8 @@ public class Personne {
 	private Long id;
 	private String nom;
 	private String prenom;
-	
 	private String telephone;
+	//private String email;
 	
 	public Personne() {
 		// TODO Auto-generated constructor stub

@@ -32,10 +32,7 @@ public class Compte {
 	private LocalDate dateOuverture = LocalDate.now();
 	
 	@OneToOne(cascade = CascadeType.ALL)
-
 	@JoinColumn(name="client_id", updatable = false)
-	@JsonIgnore
-	//@Column(nullable = false)
 	private Client client;
 	
 
@@ -98,11 +95,6 @@ public class Compte {
 	}
 
 
-	@Override
-	public String toString() {
-		return "Compte [numCompte=" + numCompte + ", solde=" + solde + ", dateOuverture=" + dateOuverture + ", client="
-				+ client + "]";
-	}
 	
 	
 

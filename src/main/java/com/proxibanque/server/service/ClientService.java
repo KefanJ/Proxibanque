@@ -42,6 +42,7 @@ public class ClientService implements IClientService {
 		client.setCompte(compte);
 		compteService.addCompte(compte);
 		repository.save(client);
+		System.out.println(client);
 		return client;
 	}
 
@@ -63,13 +64,20 @@ public class ClientService implements IClientService {
 //		compteService.updateCompteEpargne(compteEpargne);
 		//Compte compte = compteService.geCompteById(client.getCompte().getNumCompte());
 		//client.setCompte(compte);
-		compteService.updateCompte(client.getCompte());
+		//compteService.updateCompte(client.getCompte());
 		
+		Client oldclient = repository.findById(client.getId()).get();
 		
-		repository.save(client);
+		oldclient.setNom(client.getNom());
+		oldclient.setAdresse(client.getAdresse());
+		oldclient.setPrenom(client.getPrenom());
+		oldclient.setTelephone(client.getTelephone());
+		
+		System.out.println("§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§");
+		repository.save(oldclient);
 		
 		//System.out.println(client.getCompteCourant().getSolde());
-		return client;
+		return oldclient;
 	}
 
 	@Override
